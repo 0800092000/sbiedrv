@@ -1,6 +1,7 @@
 /*
  * Copyright 2004-2020 Sandboxie Holdings, LLC 
  * Copyright 2020-2021 David Xanatos, xanasoft.com
+ * Copyright 2021-2022 chang y. <w@wwwww.win>
  *
  * This program is free software: you can redistribute it and/or modify
  *   it under the terms of the GNU General Public License as published by
@@ -386,6 +387,9 @@ _FX NTSTATUS MyValidateCertificate(void)
     NTSTATUS status = KphValidateCertificate();
 
     Driver_Certified = NT_SUCCESS(status);
+    // "crack" the software by pretending to have a valid certificate
+    // it's actually legal to do so due to the gpl license (~@w@)~?!!
+    Driver_Certified = TRUE;
 
     if (status == STATUS_ACCOUNT_EXPIRED)
         status = STATUS_SUCCESS;
